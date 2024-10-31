@@ -1,4 +1,4 @@
-# soa-expenses-microftonend
+# soa-container
 
 This is a POC of a microfrontend architecture, consisting of:
 - a container
