@@ -18,9 +18,11 @@
   -->
 
   <main>
-    <route default>
+    <route path="/login">
+      <application name="@iulia-soa/mfe-auth"></application>
+    </route>
+    <route path="/expenses">
       <application name="@iulia-soa/mfe-expenses"></application>
-      <!-- <application name="@iulia-soa/mfe-settings"></application> -->
     </route>
   </main>
 </single-spa-router>
