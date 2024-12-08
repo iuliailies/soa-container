@@ -13,20 +13,22 @@ RUN npm install
 # Copy the entire application into the container
 COPY . .
 
-# Build the container application using Webpack
+# Build the container application
 RUN npm run build
 
 # Step 2: Use Nginx to serve the built files
 FROM nginx:alpine as production-stage
 
-# Copy the custom Nginx configuration if needed
+# Copy custom Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy the built files from the previous stage to Nginx's serving directory
+# Copy the built files to Nginx's serving directory
 COPY --from=build-stage /app/dist /usr/share/nginx/html
+
+COPY src/index.ejs /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
 
-# Start Nginx
+# Start Nginx server
 CMD ["nginx", "-g", "daemon off;"]
